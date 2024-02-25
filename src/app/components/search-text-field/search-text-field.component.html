@@ -1,0 +1,22 @@
+<div class="search-bar">
+  <mat-form-field appearance="outline" (drop)="onFileDropped($event)">
+    <mat-label>
+      {{_fileDragging ? 'Drop file here' : 'Search Images by Text, URL, drag an image, or upload a file'}}
+    </mat-label>
+    <input matInput #input [(ngModel)]="_searchValue">
+    <input [hidden]="true" type="file" #inputFile>
+    <span matSuffix *ngIf="_searchValue; else selectFolder">
+      <button mat-icon-button matSuffix (click)="clearSearch()">
+        <mat-icon>clear</mat-icon>
+      </button>
+      <button mat-icon-button color="primary" matSuffix (click)="onFileSearch()">
+        <mat-icon>search</mat-icon>
+      </button>
+    </span>
+    <ng-template #selectFolder>
+      <button mat-icon-button color="primary" matSuffix (click)="onFileSearch()">
+        <mat-icon>folder</mat-icon>
+      </button>
+    </ng-template>
+  </mat-form-field>
+</div>
