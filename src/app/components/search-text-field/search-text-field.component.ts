@@ -12,18 +12,18 @@ export class SearchTextFieldComponent {
 
 
   @HostListener('document:dragover', ['$event'])
-  onDragOverGlobal(event: DragEvent) {
+  dragOverGlobal(event: DragEvent) {
     event.preventDefault();
     this._fileDragging = true;
   }
 
   @HostListener('document:drop', ['$event'])
-  onFileDroppedGlobal(event: DragEvent) {
+  fileDroppedGlobal(event: DragEvent) {
     event.preventDefault();
     this._fileDragging = false;
   }
 
-  onFileDropped(event: DragEvent) {
+  fileDropped(event: DragEvent) {
     event.preventDefault();
     const file = event.dataTransfer?.files[0];
     if (file) {
@@ -32,7 +32,7 @@ export class SearchTextFieldComponent {
     }
   }
 
-  onFileSearch() {
+  fileSearch() {
     this.inputFileField.nativeElement.click();
   }
 
